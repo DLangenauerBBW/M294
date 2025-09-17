@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        document.body.style.backgroundColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
+        document.querySelector("h1").innerHTML = "Dominic"
+        document.querySelector("p").classList.add("large")
+        let ul = document.querySelector("ul")
+        let newli = document.createElement("li")
+        newli.innerText = "Nochmal Lorem"
+        ul.appendChild(newli)
+        let oldli = ul.querySelector("li:nth-child(2)")
+        oldli.remove()
+        let cat = document.createElement("img")
+        cat.src = "https://cataas.com/cat?height=400"
+        document.querySelector("h1").insertAdjacentElement("afterend", cat)
+
+          })
+    </script>
+</head>
+<body>
+    <h1>Platzhalter</h1>
+    <p>Lorem Ipsum</p>
+    <ul>
+        <li>Lorem</li>
+        <li>Ipsum</li>
+    </ul>
+</body>
+</html>
