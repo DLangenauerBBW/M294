@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Game Store</title>
+</head>
+
+<body>
+	<h1>Game Store</h1>
+	<div id="game-of-the-day">
+		Fortnight
+	</div>
+	<h2>New Releases</h2>
+	<ul class="games">
+		<li>Doom Eternal</li>
+		<li class="sale">Resident Evil Village</li>
+		<li>Ratchet & Clank: Rift Apart</li>
+		<li>Deathloop</li>
+	</ul>
+	<h2>Top Sellers</h2>
+	<ul class="games">
+		<li>PlayerUnknown's Battlegrounds</li>
+		<li>Grand Theft Auto V</li>
+		<li class="sale">Among Us</li>
+		<li>Minecraft</li>
+	</ul>
+	<h2>Free to Play</h2>
+	<ul class="games">
+		<li class="sale">Dota 2</li>
+		<li>Team Fortress 2</li>
+		<li>Apex Legends</li>
+		<li>Warframe</li>
+	</ul>
+	<div id="results">
+		<button id="button1">1</button>
+		<button id="button2">2</button>
+		<button id="button3">3</button>
+		<button id="button4">4</button>
+		<button id="button5">5</button>
+		<button id="button6">6</button>
+		<button id="button7">7</button>
+	</div>
+</body>
+
+<script defer>
+	let first = document.querySelectorAll('ul.games:nth-of-type(1) li')
+	let second = document.querySelector('ul.games:nth-of-type(2) li:nth-child(2)')
+	let third = document.querySelector('ul.games:nth-of-type(3) li:nth-child(4)')
+	let fourth = document.querySelectorAll('ul.games:nth-of-type(2) li')
+	let fifth = document.querySelector("h1")
+	let sixth = document.getElementById("game-of-the-day")
+	let seventh = document.getElementsByClassName("sale")
+
+	function toggleRed(item) {
+  		if (item instanceof NodeList || item instanceof HTMLCollection) {
+    	Array.from(item).forEach(item => {
+      		item.style.color = item.style.color === "red" ? "" : "red"
+    	})
+  		} else {
+    	item.style.color = item.style.color === "red" ? "" : "red"
+  	}
+	}
+
+	document.getElementById("button1").addEventListener("click", ()=> {toggleRed(first)})
+	document.getElementById("button2").addEventListener("click", ()=> {toggleRed(second)})
+	document.getElementById("button3").addEventListener("click", ()=> {toggleRed(third)})
+	document.getElementById("button4").addEventListener("click", ()=> {toggleRed(fourth)})
+	document.getElementById("button5").addEventListener("click", ()=> {toggleRed(fifth)})
+	document.getElementById("button6").addEventListener("click", ()=> {toggleRed(sixth)})
+	document.getElementById("button7").addEventListener("click", ()=> {toggleRed(seventh)})
+</script>
+
+
+</html>
