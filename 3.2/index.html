@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <div class="header">
@@ -26,13 +27,13 @@
             <li><strong>Live and Learn</strong> by <em>Joe Public</em></li>
         </ol>
         <h2>Latest Releases randomized</h2>
+        <div>
+            <button id="addThree">Add three more</button>
+            <button id="removeThree">Remove first three</button>
+            <button id="randomizer">Randomize!</button>
+        </div>
         <div class="coverBox">
-            <img class="cover" src="https://picsum.photos/id/30/200/200"/>
-            <img class="cover" src="https://picsum.photos/id/30/200/200"/>
-            <img class="cover" src="https://picsum.photos/id/30/200/200"/>
-            <img class="cover" src="https://picsum.photos/id/30/200/200"/>
-            <img class="cover" src="https://picsum.photos/id/30/200/200"/>
-            <img class="cover" src="https://picsum.photos/id/30/200/200"/>
+
         </div>
 
 
@@ -40,4 +41,59 @@
 
     <footer>&copy 2023 Spooky Example Inc.</footer>
 </body>
+    <script>
+        let coverBox = document.querySelector(".coverBox")
+        let pictureId = 30
+
+
+        function createCover(){
+                let cover = document.createElement('img')
+                pictureId++
+                cover.src = `https://picsum.photos/id/${pictureId}/200/200`
+                cover.classList.add("cover")
+                return cover
+        }
+
+        function createInitialCovers(){
+            for(i = 0; i < 6; i++){
+                let cover = createCover()
+                console.log(cover)
+                coverBox.append(cover)
+            }
+        }
+
+        function addThreeMore(){
+            for(i = 0; i < 3; i++){
+                let cover = createCover()
+                coverBox.appendChild(cover)
+        }}
+
+        function removeFirstThree(){
+            for(i = 0; i < 3; i++){
+                let cover = coverBox.querySelector("img:first-child")
+                cover.remove()
+        }}
+
+
+        function shuffle(){
+            let covers = Array.from(document.querySelectorAll(".cover"))
+            let rearrangedCovers = []     
+            covers.forEach(cover => {
+                const randomIndex = Math.floor(Math.random() * (rearrangedCovers.length + 1))
+                rearrangedCovers.splice(randomIndex, 0, cover)
+            })
+            coverBox.innerHTML = ""
+            rearrangedCovers.forEach((cover)=>{
+                coverBox.appendChild(cover)
+            })
+        }
+
+        createInitialCovers()
+        document.querySelector("#addThree").addEventListener("click", addThreeMore)
+        document.querySelector("#removeThree").addEventListener("click", removeFirstThree)
+        document.querySelector("#randomizer").addEventListener("click", shuffle)
+
+        //            <img class="cover" src="https://picsum.photos/id/30/200/200"/>
+        
+    </script>
 </html>
