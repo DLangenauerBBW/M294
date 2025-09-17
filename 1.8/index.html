@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+ let numbers = [];
+ let gameover = false
+ let index = 1
+ while(gameover == false){
+    let input
+    if( index == 1){
+    input = prompt("Gib mir eine Zahl, lass es Leer wenn du aufhören willst")
+    index++
+    }else{
+    input = prompt("Notiert. gib mir noch eine, lass es Leer wenn du aufhören willst")
+    }
+    if(isNaN(input)){
+        alert("Ich sagte eine Zahl Mann!")
+    }else if(input.length == 0){
+        let validation = false 
+        let result
+        while(validation == false){
+            let operator = prompt("Verstanden, hören wir auf. Sag mir nun noch wie du mit den Zahlen verfahren willst (+, -, *, /)")
+            switch(operator){
+                case ("+"):
+                    validation = true
+                    result = numbers.reduce((acc, item)=> acc + item)
+                    alert("Hab alles Addiert, das Ergebnis ist " + result)
+                    gameover = true
+                    break
+                                    
+                case ("-"):
+                    validation = true
+                    result = numbers.reduce((acc, item)=> acc - item)
+                    alert("Hab alles Subtrahiert, das Ergebnis ist " + result)
+                    gameover = true
+                    break
+                                    
+                case ("*"):
+                    validation = true
+                    result = numbers.reduce((acc, item)=> acc * item)
+                    alert("Hab alles Multipliziert, das Ergebnis ist " + result)
+                    gameover = true
+                    break
+                                   
+                case ("/"):
+                    validation = true
+                    result = numbers.reduce((acc, item)=> acc / item)
+                    alert("Hab alles Dividiert, das Ergebnis ist " + result)
+                    gameover = true
+                    break
+                
+                default:
+                    alert("Gib einen gültigen Operator ein")
+            }   
+        }
+        
+        
+    }else{
+        numbers.push(parseInt(input))
+    }
+    
+ }
+</script>
+<body>
+    
+</body>
+</html>

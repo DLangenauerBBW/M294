@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let name = prompt("Wie ist dein Name?")
+    let time = new Date().getHours()
+    if(time >= 5 && time <= 11){
+        alert("Guten Morgen " + name )
+    }else if(time >= 12 && time <= 17){
+        alert("Guten Tag " + name )
+    }else if(time >= 18 && time <= 22){
+        alert("Guten Abend " + name )
+    }else if(time >= 22 && time <= 4){
+        alert("Gute Nacht " + name )
+    }
+</script>
+<body>
+    
+</body>
+</html>
