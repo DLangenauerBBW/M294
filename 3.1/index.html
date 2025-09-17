@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <link rel="stylesheet" href="styles.css">
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let counter1 = 0
+        let counter2 = 0
+        function click1 () {
+            counter1++
+            text = document.querySelector("#counter1")
+            text.innerText = counter1
+        }
+        function click2 () {
+            counter2++
+            text = document.querySelector("#counter2")
+            text.innerText = counter2
+        }
+        document.querySelector("#leftGoal").addEventListener("click", click1)
+          document.querySelector("#rightGoal").addEventListener("click", click2)
+
+
+
+    })
+    </script>
+</head>
+<body>
+    <div id="scoreBoard">
+        <h1 id="counter1">0</h1>
+        <h1 id="counter2">0</h1>
+    </div>
+    <img id="soccerBall" src="soccer-ball-svgrepo-com.svg">
+    <div id="leftGoal"></div>
+    <div id="rightGoal"></div>
+</body>
+<script>        
+    document.addEventListener("click", (e) =>{
+        console.log(e.clientX)
+        let ball = document.querySelector("#soccerBall")
+        ball.style.left = `${e.clientX -40}px`
+        ball.style.top = `${e.clientY -40}px`
+        })</script>
+</html>
