@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+    <button>Hide Ball</button>
+    <h2></h2>
+    <div id="game">
+        <img src="cup.png" />
+        <img src="cup.png" />
+        <img src="cup.png" />
+    </div>
+</body>
+<script>
+    let cups = Array.from(document.querySelectorAll("img"))
+    let button = document.querySelector("button")
+    let counter = 0 
+    let randomIndex
+    document.querySelector("h2").innerText = counter
+    cups.forEach((item, i)=>{
+        item.addEventListener('click', (e)=>{
+            
+                if(i == randomIndex){
+                    e.target.src.includes('cup.png') ? e.target.src = "cup-open-ball.png" : e.target.src = 'cup.png' 
+                    counter = 0
+                }else{
+                    e.target.src.includes('cup.png') ? e.target.src = "cup-open.png" : e.target.src = 'cup.png'
+                    !e.target.src.includes('cup.png') && counter++    
+                }
+                document.querySelector("h2").innerText = counter
+            })
+        })
+
+    function hideBall() {
+        document.querySelector("h2").innerText = counter
+        randomIndex = Math.floor(Math.random() * 3)
+        cups.forEach((item, i)=>{
+            item.src = "cup.png"
+        })
+    }
+    button.addEventListener('click', hideBall)
+
+</script>
+</html>

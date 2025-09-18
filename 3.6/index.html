@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+</head>
+<body>  
+    <button>Play</button>
+    <div id="playingBoard">
+
+    </div>
+</body>
+<script>
+    const pictures = ["ag", "ai", "ar", "be", "bl", "bs", "fr", "ge", "gl", "gr", "ju", "lu", "ne", "nw", "ow", "sg", "sh", "so", "sz", "tg", "ti", "ur", "vd", "vs", "zg", "zh"]
+    let playingBoard = document.querySelector("#playingBoard")
+    let selection = []
+
+    function playMemory(){
+        playingBoard.innerhtml = ""
+        let chosenPictures = pictures.sort(() => Math.random() - 0.5).slice(0, 10)
+        let duplicates = [...chosenPictures, ...chosenPictures]
+        let shuffled = duplicates.sort(() => Math.random() - 0.5)
+        const toggle = (i) => {
+            i.classList.toggle("imgOn")
+            i.classList.toggle("imgOff")
+        }
+        shuffled.forEach((item, index) =>{
+            let tile = document.createElement("div")
+            let img = document.createElement("img")
+            tile.classList.add("playingTile")
+            img.classList.add("imgOff")
+            tile.addEventListener("click", () =>{
+                toggle(img)
+                selection.push(img)
+                if (selection.length >= 2 ){
+                    if(selection[0].src == selection[1].src){
+                        selection.forEach((item)=>{
+                        setTimeout(()=>{
+                        item.parentElement.style.opacity = "0%"
+                        toggle(item)
+                        }, 1000)})
+                    }else{
+                    selection.forEach((item)=>{
+                        setTimeout(()=>{
+                        toggle(item)
+                        }, 1000)})
+                    }
+                    selection = []
+                }
+            })
+            img.src = `./img/${item}.png`
+            tile.appendChild(img)
+            playingBoard.appendChild(tile)
+        })
+    }
+    document.querySelector("button").addEventListener("click", playMemory)
+</script>
+</html>

@@ -1,30 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
+<body>
+    <h1 id="message">Ich habe eine Zahl zwischen 1 und 100 gewählt, raten sie welche</h1>
+    <form>
+    <input type="number" name="guess">
+    <input type="submit">
+    </form>
+</body>
+
 <script>
     let randomNumber = Math.floor(Math.random() * 100)
-    let gameover = false
     let i = 0
-    while(gameover == false){
-        let guess = prompt("Ich habe eine Zahl zwischen 1 und 100 gewählt, raten sie welche")
-        if(randomNumber > guess){
+    let message = document.querySelector("#message")
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+        let guess = document.forms[0].guess.value
+        console.log(guess)
+        
+         if (randomNumber > guess) {
             i++
-            alert("Falsch, meine Zahl ist Höher, versuchs nochmal")
-        }else if(randomNumber < guess){
+            message.innerText = "Falsch, meine Zahl ist Höher, versuchs nochmal"
+        } else if (randomNumber < guess) {
             i++
-            alert("Falsch, meine Zahl ist Tiefer, versuchs nochmal")
-        }else if(randomNumber == guess){
+            message.innerText = "Falsch, meine Zahl ist Tiefer, versuchs nochmal"
+        } else if (randomNumber == guess) {
             i++
-            alert("Glückwunsch, es war tatsächlich " + randomNumber + "! Du hast dafür " + i + " versuche benötigt.")
-            gameover = true
+            message.innerText = "Glückwunsch, es war tatsächlich " + randomNumber + "! Du hast dafür " + i + " versuche benötigt."
+            
         }
     }
+
+    document.forms[0].addEventListener("submit", onSubmit)
 </script>
-<body>
-    
-</body>
+
 </html>

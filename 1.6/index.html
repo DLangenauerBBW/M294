@@ -5,20 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<script>
-    let name = prompt("Wie ist dein Name?")
-    let time = new Date().getHours()
-    if(time >= 5 && time <= 11){
-        alert("Guten Morgen " + name )
-    }else if(time >= 12 && time <= 17){
-        alert("Guten Tag " + name )
-    }else if(time >= 18 && time <= 22){
-        alert("Guten Abend " + name )
-    }else if(time >= 22 && time <= 4){
-        alert("Gute Nacht " + name )
-    }
-</script>
+
 <body>
+    <form>
+        <label for="name">Wie ist dein Name?</label>
+        <input name="name" type="text">
+        <button type="submit">Senden</button>
+        <h1 id="message">ff</h1>
+    </form>
     
 </body>
+<script>
+    
+    let time = new Date().getHours()
+    let message = document.querySelector("#message")
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+        let name = document.forms[0].name.value
+    if(time >= 5 && time <= 11){
+        message.innerText="Guten Morgen " + name 
+    }else if(time >= 12 && time <= 17){
+        message.innerText="Guten Tag " + name 
+    }else if(time >= 18 && time <= 22){
+        message.innerText="Guten Abend " + name 
+    }else if(time >= 22 || time <= 4){
+        message.innerText="Gute Nacht " + name 
+    }
+    }
+
+    document.forms[0].addEventListener("submit", onSubmit)
+    
+
+</script>
 </html>

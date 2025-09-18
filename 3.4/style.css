@@ -1,0 +1,47 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#destinations{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 5px;
+}
+
+li{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(98, 140, 179);
+    border-radius: 20px;
+    padding: 10px;
+    
+}
+
+.country{
+    font-weight: 600;
+}
+.selectedTile{
+    border: 2px solid rgb(21, 174, 169);
+    background-color: azure;
+    transform: scale(1.5);
+    
+}
+
+#navbar{
+    display: flex;
+    flex-grow: 1;
+    margin: 20px;
+    gap: 20px;
+}
+
+button{
+    background-color: rgb(98, 140, 179);
+    border: 2px dotted rgb(67, 97, 124);;
+    border: none;
+    font-size: 2em;
+    border-radius: 20px;
+}

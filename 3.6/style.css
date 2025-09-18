@@ -1,0 +1,22 @@
+#playingBoard{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, auto);
+    gap: 20px;
+}
+
+.playingTile{
+    background-color: brown;
+    height: 100px;
+    width: 100px;
+    margin: auto;
+    display: flex;
+}
+    
+.imgOn{
+    margin: auto;
+}
+
+.imgOff{
+    display: none;
+}
